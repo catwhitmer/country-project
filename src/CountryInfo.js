@@ -1,5 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
+
+const SearchBar = styled.input`
+  padding: 8px;
+  margin-bottom: 10px;
+`;
+
+const Panel = styled.div`
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+`;
+
+const Image = styled.img`
+  max-width: 100%;
+  max-height: 200px;
+`;
+
 
 const CountryInfo = () => {
   const [countryData, setCountryData] = useState(null);
@@ -40,7 +58,7 @@ const CountryInfo = () => {
 
   return (
     <div>
-      <input
+      <SearchBar
         type="text"
         placeholder="Search for a country..."
         value={searchQuery}
@@ -48,14 +66,13 @@ const CountryInfo = () => {
       />
       {filteredCountries.map((country) => (
         <div key={country.cca3}>
-          <div>
+          <Panel>
             <h2>{country.name.common}</h2>
-            {}
-          </div>
-          <div>
-            <img src={country.flags[0]} alt={`${country.name.common} Flag`} />
-            <img/>
-          </div>
+            <h2>{country.name.official}</h2>
+          </Panel>
+          <Panel>
+            <Image src={country.flags[0]} alt={`${country.name.common} Flag`} />
+          </Panel>
         </div>
       ))}
     </div>
