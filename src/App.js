@@ -4,7 +4,7 @@ import CountryInfo from "./CountryInfo";
 function App() {
   return (
     <div>
-      <h1 className="projectName">Country information Project</h1>
+      <h1 className="header">Country information Project</h1><hr/>
       <CountryInfo />
     </div>
   );

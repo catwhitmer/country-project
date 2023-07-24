@@ -12,17 +12,24 @@ code {
     monospace;
 }
 
-.projectName {
+.header {
   display: flex;
   justify-content: center;
-  border-bottom: 2px solid gray;
 }
 
-.container {
+hr {
+  width: 800px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+}
+
+.formContainer {
   background-color: lightgray;
 }
 
 .form {
+  display: flex;
+  justify-content: center;
   background-color: rgb(43, 84, 251);
   padding: 20px;
 }
