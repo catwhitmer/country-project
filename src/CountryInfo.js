@@ -27,38 +27,39 @@ const CountryInfo = () => {
     <div>
       <form className="form" onSubmit={handleSearchSubmit}>
         <input
+          className="searchBar"
           type="text"
           placeholder="Search for a country..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <button type="submit">Search</button>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </form>
       {countryData &&
         countryData.map((country) => (
-          <div key={country.cca3}>
-            <div className="panelContainer">
-              <div className="firstPanel">
-                <h2>{country.name.common}</h2>
-                <h2>{country.name.official}</h2>
-                {/* <h2>{currency}</h2>    */}
-                {/* <h2>{currency symbol}</h2> */}
-                {/* <h2>{language}</h2> */}
-                <h2>{country.capital}</h2>
-                <h2>{country.population}</h2>
-              </div>
-              <div className="secondPanel">
-                <img
-                  className="image"
-                  src={country.flags[0]}
-                  alt={`${country.name.common} Flag`}
-                />
-                <img
-                  className="image"
-                  src={country.coatofarms}
-                  alt={`${country.name.common} Coat of Arms`}
-                />
-              </div>
+          <div className="panelContainer" key={country.cca3}>
+            <div className="firstPanel">
+              <h2>Common Name: {country.name.common}</h2>
+              <h2>Official Name: {country.name.official}</h2>
+              <h2>Currency: {Object.values(country.currencies)[0].name}</h2>
+              <h2>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h2>
+              <h2>Language: {Object.values(country.languages)}</h2>
+              <h2>Country Capital: {country.capital}</h2>
+              <h2>Population: {country.population}</h2>
+            </div>
+            <div className="secondPanel">
+              <img
+                className="image"
+                src={country.flags[0]}
+                alt={`${country.name.common} Flag`}
+              />
+              <img
+                className="image"
+                src={country.arms}
+                alt={`${country.name.common} Coat of Arms`}
+              />
             </div>
           </div>
         ))}
