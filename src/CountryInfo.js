@@ -48,11 +48,13 @@ const CountryInfo = () => {
                 <h2>{country.population}</h2>
               </div>
               <div className="secondPanel">
-                <img className="flag"
+                <img
+                  className="image"
                   src={country.flags[0]}
                   alt={`${country.name.common} Flag`}
                 />
-                <img className=""
+                <img
+                  className="image"
                   src={country.coatofarms}
                   alt={`${country.name.common} Coat of Arms`}
                 />
