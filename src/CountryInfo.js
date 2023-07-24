@@ -40,7 +40,7 @@ const CountryInfo = () => {
       {countryData &&
         countryData.map((country) => (
           <div className="panelContainer" key={country.cca3}>
-            <div className="firstPanel">
+            <div className="infoPanel">
               <h2>Common Name: {country.name.common}</h2>
               <h2>Official Name: {country.name.official}</h2>
               <h2>Currency: {Object.values(country.currencies)[0].name}</h2>
@@ -49,7 +49,7 @@ const CountryInfo = () => {
               <h2>Country Capital: {country.capital}</h2>
               <h2>Population: {country.population}</h2>
             </div>
-            <div className="secondPanel">
+            <div className="flagPanel">
               <img
                 className="image"
                 src={country.flags[0]}
@@ -57,7 +57,7 @@ const CountryInfo = () => {
               />
               <img
                 className="image"
-                src={country.arms}
+                src={country.coatOfArms}
                 alt={`${country.name.common} Coat of Arms`}
               />
             </div>

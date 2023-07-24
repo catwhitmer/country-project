@@ -1,3 +1,17 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 .projectName {
   display: flex;
   justify-content: center;
@@ -9,41 +23,38 @@
 }
 
 .form {
-  display: flex;
-  justify-content: center;
   background-color: rgb(43, 84, 251);
   padding: 20px;
 }
 
 .searchBar {
-  width: 200px;
-  display: flex;
+  width: 500px;
   padding: 10px;
   margin-right: 100px;
   border-radius: 10px;
 }
 
 .button {
-  display: flex;
   padding: 10px;
   border-radius: 10px;
 }
 
 .panelContainer {
+  background-color: lightgray;
   height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.firstPanel {
+.infoPanel {
   background: whitesmoke;
   border: 2px solid lightgray;
   margin: 20px;
   padding: 20px;
 }
 
-.secondPanel {
+.flagPanel {
   display: flex;
   flex-direction: column;
   background: whitesmoke;
