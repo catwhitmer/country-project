@@ -36,14 +36,16 @@ const CountryInfo = () => {
           Submit
         </button>
       </form>
-      {countryData &&
+      {countryData && !error ? (
         countryData.map((country) => (
           <div className="panelContainer" key={country.cca3}>
             <div className="infoPanel">
               <h2>Common Name: {country.name.common}</h2>
               <h2>Official Name: {country.name.official}</h2>
               <h2>Currency: {Object.values(country.currencies)[0].name}</h2>
-              <h2>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h2>
+              <h2>
+                Currency Symbol: {Object.values(country.currencies)[0].symbol}
+              </h2>
               <h2>Language: {Object.values(country.languages)}</h2>
               <h2>Country Capital: {country.capital}</h2>
               <h2>Population: {country.population}</h2>
@@ -61,8 +63,12 @@ const CountryInfo = () => {
               />
             </div>
           </div>
-        ))}
-      {error && <div>{error}</div>}
+        ))
+      ) : (
+        <div className="panelContainer">
+          {error && <div className="infoPanel">{error}</div>}
+        </div>
+      )}
     </div>
   );
 };
