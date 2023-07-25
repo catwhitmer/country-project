@@ -46,7 +46,7 @@ const CountryInfo = () => {
               <h2>Currency: {Object.values(country.currencies)[0].name}</h2>
               <h2>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h2>
               <h2>Language: {Object.values(country.languages)}</h2>
-              <h2>Country Capital: {country.capital}</h2>
+              <h2>Capital City: {country.capital}</h2>
               <h2>Population: {country.population}</h2>
             </div>
             <div className="flagPanel">
