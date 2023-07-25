@@ -16,9 +16,10 @@ const CountryInfo = () => {
       const response = await axios.get(
         `https://restcountries.com/v3/name/${searchQuery}`
       );
+      console.log(response.data)
       setCountryData(response.data);
     } catch (error) {
-      setError("Error fetching data from the API");
+      setError("Country Not Found");
     }
   };
 
@@ -43,9 +44,7 @@ const CountryInfo = () => {
               <h2>Common Name: {country.name.common}</h2>
               <h2>Official Name: {country.name.official}</h2>
               <h2>Currency: {Object.values(country.currencies)[0].name}</h2>
-              <h2>
-                Currency Symbol: {Object.values(country.currencies)[0].symbol}
-              </h2>
+              <h2>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h2>
               <h2>Language: {Object.values(country.languages)}</h2>
               <h2>Country Capital: {country.capital}</h2>
               <h2>Population: {country.population}</h2>
