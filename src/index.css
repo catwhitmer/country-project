@@ -23,10 +23,6 @@ hr {
   border-radius: 2px;
 }
 
-.formContainer {
-  background-color: lightgray;
-}
-
 .form {
   display: flex;
   justify-content: center;

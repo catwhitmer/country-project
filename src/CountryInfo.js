@@ -16,7 +16,6 @@ const CountryInfo = () => {
       const response = await axios.get(
         `https://restcountries.com/v3/name/${searchQuery}`
       );
-      console.log(response.data);
       setCountryData(response.data);
     } catch (error) {
       setError("Country Not Found");
@@ -41,13 +40,13 @@ const CountryInfo = () => {
         countryData.map((country) => (
           <div className="panelContainer" key={country.cca3}>
             <div className="infoPanel">
-              <h2>Common Name: {country.name.common}</h2>
-              <h2>Official Name: {country.name.official}</h2>
-              <h2>Currency: {Object.values(country.currencies)[0].name}</h2>
-              <h2>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h2>
-              <h2>Language: {Object.values(country.languages)}</h2>
-              <h2>Capital City: {country.capital}</h2>
-              <h2>Population: {country.population}</h2>
+              <h3>Common Name: {country.name.common}</h3>
+              <h3>Official Name: {country.name.official}</h3>
+              <h3>Currency: {Object.values(country.currencies)[0].name}</h3>
+              <h3>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h3>
+              <h3>Language: {Object.values(country.languages)}</h3>
+              <h3>Capital City: {country.capital}</h3>
+              <h3>Population: {country.population}</h3>
             </div>
             <div className="flagPanel">
               <img
