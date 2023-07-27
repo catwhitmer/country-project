@@ -61,7 +61,7 @@ const CountryInfo = () => {
           {countryData &&
             !error &&
             countryData.map((country) => (
-              <div>
+              <div key={country.cca3}>
                 <img
                   className="image"
                   src={country.flags[0]}
