@@ -4,7 +4,7 @@ import axios from "axios";
 const CountryInfo = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [countryData, setCountryData] = useState(null);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState([]);
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -12,6 +12,8 @@ const CountryInfo = () => {
 
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
+    setErrors([]); // Clear previous errors
+
     try {
       const response = await axios.get(
         `https://restcountries.com/v3.1/name/${searchQuery}`
@@ -19,7 +21,8 @@ const CountryInfo = () => {
       console.log(response.data);
       setCountryData(response.data);
     } catch (error) {
-      setError("Country Not Found");
+      setErrors([...errors, "Error fetching data from the API"]);
+      setCountryData(null);
     }
   };
 
@@ -38,7 +41,7 @@ const CountryInfo = () => {
         </button>
       </form>
 
-      {countryData &&
+      {countryData && errors.length === 0 ? (
         countryData.map((country) => (
           <div key={country.cca3}>
             <div className="panelContainer">
@@ -66,8 +69,16 @@ const CountryInfo = () => {
               </div>
             </div>
           </div>
-        ))}
-      {error && <div>{error}</div>}
+        ))
+      ) : (
+        <div>
+        {errors.length > 0 ? (
+          <div>Error(s) : {errors.join(", ")}</div>
+        ) : (
+          <div>Loading...</div>
+        )}
+        </div>
+      )}
     </div>
   );
 };
