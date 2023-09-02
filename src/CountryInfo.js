@@ -14,8 +14,9 @@ const CountryInfo = () => {
     event.preventDefault();
     try {
       const response = await axios.get(
-        `https://restcountries.com/v3/name/${searchQuery}?fullText=true`
+        `https://restcountries.com/v3.1/name/${searchQuery}`
       );
+      console.log(response.data);
       setCountryData(response.data);
     } catch (error) {
       setError("Country Not Found");
@@ -37,45 +38,36 @@ const CountryInfo = () => {
         </button>
       </form>
 
-      <div className="panelContainer">
-        <div className="infoPanel">
-          {countryData && !error ? (
-            countryData.map((country) => (
-              <div key={country.cca3}>
-                <div>
-                  <h3>Common Name: {country.name.common}</h3>
-                  <h3>Official Name: {country.name.official}</h3>
-                  <h3>Currency: {Object.values(country.currencies)[0].name}</h3>
-                  <h3>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h3>
-                  <h3>Language: {Object.values(country.languages)}</h3>
-                  <h3>Capital City: {country.capital}</h3>
-                  <h3>Population: {country.population}</h3>
-                </div>
+      {countryData &&
+        countryData.map((country) => (
+          <div key={country.cca3}>
+            <div className="panelContainer">
+              <div className="infoPanel">
+                <h3>Common Name: {country.name.common}</h3>
+                <h3>Official Name: {country.name.official}</h3>
+                <h3>Currency: {Object.values(country.currencies)[0].name}</h3>
+                <h3>Currency Symbol: {Object.values(country.currencies)[0].symbol}</h3>
+                <h3>Language: {Object.values(country.languages)}</h3>
+                <h3>Capital City: {country.capital}</h3>
+                <h3>Population: {country.population}</h3>
               </div>
-            ))
-          ) : (
-            <div>{error && <div>{error}</div>}</div>
-          )}
-        </div>
-        <div className="flagPanel">
-          {countryData &&
-            !error &&
-            countryData.map((country) => (
-              <div key={country.cca3}>
+
+              <div className="flagPanel">
                 <img
                   className="image"
-                  src={country.flags[0]}
+                  src={country.flags.png}
                   alt={`${country.name.common} Flag`}
                 />
                 <img
                   className="image"
-                  src={country.coatOfArms}
+                  src={country.coatOfArms.png}
                   alt={`${country.name.common} Coat of Arms`}
                 />
               </div>
-            ))}
-        </div>
-      </div>
+            </div>
+          </div>
+        ))}
+      {error && <div>{error}</div>}
     </div>
   );
 };
